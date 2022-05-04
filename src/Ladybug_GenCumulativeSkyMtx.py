@@ -150,12 +150,14 @@ def main(epwFile, skyType, workingDir, useOldRes):
         
         if not os.path.isfile(gendaymtxFile):
             # let's see if we can grab it from radiance folder
-            if os.path.isfile("c:/radiance/bin/gendaymtx.exe"):
+            lbtools_radiance_folder = (os.environ['USERPROFILE'] + "/ladybug_tools/Radiance/bin/")
+            lbt_gendaymtxFile = lbtools_radiance_folder + "gendaymtx.exe"
+            if os.path.isfile(lbt_gendaymtxFile):
                 # just copy this file
-                shutil.copyfile("c:/radiance/bin/gendaymtx.exe", gendaymtxFile)
+                shutil.copyfile(lbt_gendaymtxFile, gendaymtxFile)
                 # in newer versions of radiance you also need msvcr120.dll
-                if os.path.isfile("c:/radiance/bin/msvcr120.dll"):
-                    shutil.copyfile("c:/radiance/bin/msvcr120.dll",
+                if os.path.isfile(lbtools_radiance_folder + "msvcr120.dll"):
+                    shutil.copyfile(lbtools_radiance_folder + "msvcr120.dll",
                                     os.path.join(workingDir, 'msvcr120.dll'))
                     
             else:

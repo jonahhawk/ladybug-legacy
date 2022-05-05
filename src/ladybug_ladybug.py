@@ -121,6 +121,7 @@ class CheckIn():
             # this is IronPython.
             # The shortcoming of os.name is that it returns "posix" for both
             # Mac and Linux, here we don't care (and anyways, rhino isn't on linux)
+            # set the ladybug folder to the ladybug_tools folder
             if os.name == 'nt':
                 ladybug_path = os.environ['USERPROFILE'] + "ladybug_tools\\ladybug\\"
                 if os.path.exists(ladybug_path) and os.access(ladybug_path, os.F_OK):  # check if folder exists
